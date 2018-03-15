@@ -11,12 +11,11 @@ import fetchData from './middleware/FetchData';
 //import ItemDetails from './components/ItemsDetail';
 
 //FIX: Check if this is the correct way to pass middleware in this case.
-//const createStoreWithMiddleware = applyMiddleware(fetchData)(createStore);
-const store = createStore(reducers, {}, applyMiddleware(fetchData));
+const createStoreWithMiddleware = applyMiddleware(fetchData)(createStore);
 //       <Route path="/item/:id" component={ItemDetails} />
 
 ReactDOM.render(
-  <Provider store={store}>
+  <Provider store={createStoreWithMiddleware(reducers)}>
     <BrowserRouter>
       <Switch>
         <Route path="/" component={ItemsList} />

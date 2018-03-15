@@ -1,16 +1,38 @@
 .itemsContainer {
   display: grid;
-  grid-template-rows: auto;
+  grid-template-rows: 10% auto 10%;
   grid-template-columns: 1fr;
-  grid-gap: 20px;
+  grid-gap: 50px;
+  width: 90%;
+  max-width: 1240px;
+  margin: 0 auto;
 }
 
 .card {
   min-height: 100%;
-  background: white;
+  top: 0;
+  position: relative;
   display: flex;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   flex-direction: column;
   justify-content: space-between;
+  transition: all 0.1s ease-in;
+}
+
+.card:hover {
+  cursor: pointer;
+  top: -2px;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+}
+
+.item-title,
+.item-company {
+  text-align: center;
+}
+
+.thumbNail {
+  background-size: cover;
+  background-position: center center;
 }
 
 @media only screen and (min-width: 850px) {

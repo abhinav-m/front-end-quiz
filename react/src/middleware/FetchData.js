@@ -12,7 +12,7 @@ const fetchData = store => next => action => {
     case FETCH_ITEMS:
       //Need to add api for pagination.
       //http://localhost:3001/browse?start=1&limit=50
-      const API_URL = '/browse';
+      const API_URL = '/browse?start=1&limit=58';
       request.get(API_URL).end((err, res) => {
         if (err) {
           return next({
