@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import item_list from './item_list';
 import { fetchItems } from '../actions';
+import '../styles/styles.css';
 
 class ItemList extends Component {
   componentDidMount() {
@@ -10,9 +12,12 @@ class ItemList extends Component {
   }
 
   render() {
-    console.log(this.props.items);
-    const title = this.props.items[0] ? this.props.items[0]['title'] : 'test';
-    return <div>{title}.</div>;
+    const items = this.props.items;
+    if (items.length === 0) {
+      return <div>Loading...</div>;
+    } else {
+      return <div className="itemsContainer">{item_list(items)}</div>;
+    }
   }
 }
 

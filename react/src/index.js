@@ -7,9 +7,11 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './index.css';
 import reducers from './reducers';
 import ItemsList from './components/ItemsList';
+import fetchData from './middleware/FetchData';
 //import ItemDetails from './components/ItemsDetail';
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
+//FIX: Check if this is the correct way to pass middleware in this case.
+const createStoreWithMiddleware = applyMiddleware(fetchData)(createStore);
 //       <Route path="/item/:id" component={ItemDetails} />
 
 ReactDOM.render(
