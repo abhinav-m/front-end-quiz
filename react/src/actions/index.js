@@ -3,7 +3,6 @@ import { data } from './item';
 
 export function fetchItems() {
   return {
-    type: FETCH_ITEMS,
-    payload: { data }
+    type: FETCH_ITEMS
   };
 }

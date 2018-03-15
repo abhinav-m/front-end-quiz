@@ -12,17 +12,19 @@ class ItemList extends Component {
   }
 
   render() {
-    const items = this.props.items;
-    if (items.length === 0) {
+    const { isFetching, isError } = this.props.items;
+    if (isFetching) {
       return <div>Loading...</div>;
     } else {
-      return <div className="itemsContainer">{item_list(items)}</div>;
+      return (
+        <div className="itemsContainer">{item_list(this.props.items.data)}</div>
+      );
     }
   }
 }
 
 function mapStateToProps(state) {
-  return { items: state.items };
+  return Object.assign({}, state);
 }
 
 export default connect(mapStateToProps, { fetchItems })(ItemList);
