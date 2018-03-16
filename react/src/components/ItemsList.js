@@ -17,7 +17,15 @@ class ItemList extends Component {
       return <div>Loading...</div>;
     } else {
       return (
-        <div className="itemsContainer">{item_list(this.props.items.data)}</div>
+        <div className="itemsPage">
+          <h1>Browse</h1>
+          <div className="itemsContainer">
+            {item_list(this.props.items.data)}
+          </div>
+          <div className="loadButton">
+            <span>Load more</span>
+          </div>
+        </div>
       );
     }
   }

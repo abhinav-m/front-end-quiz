@@ -8,9 +8,7 @@ const item_list = items => {
     };
     return (
       <div className="card" key={parseInt(item.integerId)}>
-        <div className="item-title">{item.title}</div>
         <div className="thumbNail" style={style} alt={item.description} />
-        <div className="item-company">{item.seller.company}</div>
       </div>
     );
   });
