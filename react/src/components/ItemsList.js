@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import item_list from './item_list';
-import { fetchItems } from '../actions';
+import { fetchAllItems } from '../actions';
 import '../styles/styles.css';
 
 class ItemList extends Component {
   componentDidMount() {
-    this.props.fetchItems();
+    this.props.fetchAllItems();
   }
 
   render() {
@@ -35,4 +35,4 @@ function mapStateToProps(state) {
   return Object.assign({}, state);
 }
 
-export default connect(mapStateToProps, { fetchItems })(ItemList);
+export default connect(mapStateToProps, { fetchAllItems })(ItemList);

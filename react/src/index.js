@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './index.css';
 import reducers from './reducers';
 import ItemsList from './components/ItemsList';
+import ItemDetail from './components/ItemDetail';
 import fetchData from './middleware/FetchData';
 //import ItemDetails from './components/ItemsDetail';
 
@@ -18,6 +19,8 @@ ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
     <BrowserRouter>
       <Switch>
+        <Route path="/item/:id" component={ItemDetail} />
+
         <Route path="/" component={ItemsList} />
       </Switch>
     </BrowserRouter>

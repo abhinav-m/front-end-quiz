@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const item_list = items => {
   return items.map(item => {
@@ -7,9 +8,11 @@ const item_list = items => {
       paddingBottom: '100%'
     };
     return (
-      <div className="card" key={parseInt(item.integerId)}>
-        <div className="thumbNail" style={style} alt={item.description} />
-      </div>
+      <Link to={`/item/${item.integerId}`}>
+        <div className="card " key={parseInt(item.integerId)}>
+          <div className="thumbNail" style={style} alt={item.description} />
+        </div>
+      </Link>
     );
   });
 };
