@@ -23,7 +23,7 @@ class ItemList extends Component {
             {item_list(this.props.items.data)}
           </div>
           <div className="loadButton">
-            <span>Load more</span>
+            <span onClick={() => this.props.fetchAllItems()}>Load more</span>
           </div>
         </div>
       );

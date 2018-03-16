@@ -8,8 +8,8 @@ const item_list = items => {
       paddingBottom: '100%'
     };
     return (
-      <Link to={`/item/${item.integerId}`}>
-        <div className="card " key={parseInt(item.integerId)}>
+      <Link to={`/item/${item.integerId}`} key={parseInt(item.integerId)}>
+        <div className="card ">
           <div className="thumbNail" style={style} alt={item.description} />
         </div>
       </Link>

@@ -5,7 +5,18 @@ import {
   FETCH_ITEMS_SUCCESSFUL
 } from '../actions/types';
 
-export default function(state = { isFetching: true, isError: false }, action) {
+export default function(
+  state = {
+    isFetching: true,
+    isError: false,
+    start: 1,
+    end: 9,
+    data: [],
+    totalItems: 0,
+    fetchLimitReached: false
+  },
+  action
+) {
   switch (action.type) {
     case FETCH_ALL_ITEMS:
       return Object.assign({}, state, { isFetching: true });
@@ -16,10 +27,18 @@ export default function(state = { isFetching: true, isError: false }, action) {
         errorMessage: action.err
       });
     case FETCH_ITEMS_SUCCESSFUL:
+      //Add new data to existing data.
+      const { items, totalItems, fetchLimitReached, start, end } = action.data;
+      const data = state.data.concat(items);
+
       return Object.assign({}, state, {
         isFetching: false,
         isError: false,
-        data: action.data
+        data,
+        start,
+        end,
+        totalItems,
+        fetchLimitReached
       });
 
     default:
