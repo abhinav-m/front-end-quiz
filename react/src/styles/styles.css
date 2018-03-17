@@ -1,5 +1,7 @@
-body {
-  background: ivory;
+#root {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .itemsContainer {
@@ -7,57 +9,53 @@ body {
   grid-template-columns: 1fr;
   grid-gap: 50px;
   max-width: 1240px;
+  width: 90%;
   margin: 0 auto;
-  width: fit-content;
+}
+
+.itemDetail {
+  display: grid;
+  grid-template-columns: 10% 1fr 2fr 10%;
+  width: 90%;
+  max-width: 1240px;
+  grid-gap: 50px;
+  margin: 0 auto;
+  margin-top: 100px;
+}
+
+.itemDetail .card {
+  grid-column: 2/3;
+}
+
+.itemDescription {
+  grid-column: 3/4;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+}
+
+.loadButton {
+  text-align: center;
+  line-height: 100px;
 }
 
 h1 {
   text-align: center;
+  color: bisque;
 }
 
-.loadButton {
-  height: 50px;
-  text-align: center;
-  color: white;
-  background: white;
-  padding: 10px;
-}
-
-.loadButton span {
-  border-radius: 5px;
-  border-color: black;
-  border-width: 3px;
-  background: black;
-  line-height: 50px;
-  padding: 10px;
-}
-
-.card {
-  top: 0;
-  position: relative;
-  height: 300px;
-  width: 300px;
+.purchaseButtons {
   display: flex;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  flex-direction: column;
-  justify-content: space-between;
-  transition: all 0.1s ease-in;
+  justify-content: space-around;
 }
 
 .card:hover {
   cursor: pointer;
   top: -2px;
   box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
-}
-
-.item-title,
-.item-company {
-  text-align: center;
-}
-
-.thumbNail {
-  background-size: cover;
-  background-position: center center;
 }
 
 @media only screen and (min-width: 850px) {

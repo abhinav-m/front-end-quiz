@@ -13,7 +13,7 @@ const ItemsPage = props => {
     }
     return (
       <div className="itemsPage">
-        <h1>Browse</h1>
+        <h4 className="text-center">Browse</h4>
         <div className="itemsContainer">
           <ItemCards
             items={props.items.data}
@@ -34,6 +34,7 @@ const ItemsPage = props => {
 
 const LoadButton = props => (
   <button
+    className="btn btn-primary"
     onClick={() => (props.fetchLimitReached ? true : props.fetchItems())}
     disabled={props.fetchLimitReached}
   >

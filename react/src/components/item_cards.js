@@ -4,19 +4,25 @@ import { Link } from 'react-router-dom';
 import Favourite from './favourite_item';
 
 const ItemCards = props => {
+  const style = {
+    maxWidth: '300px'
+  };
   return props.items.map(item => {
-    const style = {
-      backgroundImage: `url(${item.image})`,
-      paddingBottom: '100%'
-    };
     return (
-      <div>
-        <Link to={`/item/${item.integerId}`} key={parseInt(item.integerId, 10)}>
-          <div className="card ">
-            <div className="thumbNail" style={style} alt={item.description} />
-          </div>
+      <div
+        className="card bg-light"
+        style={style}
+        key={parseInt(item.integerId, 10)}
+      >
+        <Link to={`/item/${item.integerId}`} className="card-body">
+          <img
+            className="card-img-top"
+            src={item.image}
+            alt={item.description}
+          />
         </Link>
         <Favourite
+          class="card-footer"
           favourites={props.favourites}
           toggleFavourite={props.toggleFavourite}
           id={item.integerId}
