@@ -4,7 +4,7 @@ import ItemCards from './item_cards';
 
 const ItemsPage = props => {
   const { isFetching, isError, fetchLimitReached } = props.items;
-  const { fetchItems } = props;
+  const { fetchItems, favourites, toggleFavourite } = props;
   if (isFetching) {
     return <div>Loading...</div>;
   } else {
@@ -15,7 +15,11 @@ const ItemsPage = props => {
       <div className="itemsPage">
         <h1>Browse</h1>
         <div className="itemsContainer">
-          <ItemCards items={props.items.data} />
+          <ItemCards
+            items={props.items.data}
+            favourites={favourites}
+            toggleFavourite={toggleFavourite}
+          />
         </div>
         <div className="loadButton">
           <LoadButton

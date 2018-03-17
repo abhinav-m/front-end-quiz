@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { fetchItem } from '../actions';
+import { fetchItem, toggleFavourite } from '../actions';
 import ItemDetails from '../components/item_details';
 
 class ItemDetailsContainer extends Component {
@@ -11,12 +11,25 @@ class ItemDetailsContainer extends Component {
   }
 
   render() {
-    return <ItemDetails item={this.props.item} />;
+    return (
+      <ItemDetails
+        item={this.props.item}
+        toggleFavourite={this.props.toggleFavourite}
+        favourites={this.props.favourites}
+      />
+    );
   }
 }
 
 function mapStateToProps(state) {
-  return { item: state.item, fetchItem };
+  return {
+    item: state.item,
+    favourites: state.favourites,
+    fetchItem,
+    toggleFavourite
+  };
 }
 
-export default connect(mapStateToProps, { fetchItem })(ItemDetailsContainer);
+export default connect(mapStateToProps, { fetchItem, toggleFavourite })(
+  ItemDetailsContainer
+);

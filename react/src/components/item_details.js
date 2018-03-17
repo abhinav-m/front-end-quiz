@@ -1,20 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import Favourite from './favourite_item';
+
 const ItemDetails = props => {
   const { isFetching, isError } = props.item;
-
   if (isFetching) {
     return <div>Loading..</div>;
   } else {
     if (isError) {
       return <div>Whoops! some error occurred on our server.</div>;
     }
-    return item_details(props.item.data);
+
+    return item_details(props);
   }
 };
 
-const item_details = item => {
+const item_details = props => {
+  const { favourites, toggleFavourite } = props;
+  const item = props.item.data;
+
   const style = {
     backgroundImage: `url(${item.image})`,
     paddingBottom: '100%'
@@ -45,6 +50,11 @@ const item_details = item => {
         <p className="itemDescription">{item.description}</p>
         <p className="itemCreator">{item.creators}</p>
       </div>
+      <Favourite
+        favourites={favourites}
+        toggleFavourite={toggleFavourite}
+        id={item.integerId}
+      />
     </div>
   );
 };

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import ItemsPage from '../components/items_page';
-import { fetchAllItems } from '../actions';
+import { fetchAllItems, toggleFavourite } from '../actions';
 import '../styles/styles.css';
 
 class ItemsPageContainer extends Component {
@@ -18,13 +18,22 @@ class ItemsPageContainer extends Component {
       <ItemsPage
         items={this.props.items}
         fetchItems={this.props.fetchAllItems}
+        favourites={this.props.favourites}
+        toggleFavourite={this.props.toggleFavourite}
       />
     );
   }
 }
 
 function mapStateToProps(state) {
-  return { items: state.items, fetchAllItems };
+  return {
+    items: state.items,
+    favourites: state.favourites,
+    fetchAllItems,
+    toggleFavourite
+  };
 }
 
-export default connect(mapStateToProps, { fetchAllItems })(ItemsPageContainer);
+export default connect(mapStateToProps, { fetchAllItems, toggleFavourite })(
+  ItemsPageContainer
+);
