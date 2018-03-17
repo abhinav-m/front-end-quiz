@@ -1,25 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
 
-import { fetchItem } from '../actions';
+const ItemDetails = props => {
+  const { isFetching, isError } = props.item;
 
-class ItemDetails extends Component {
-  componentDidMount() {
-    const { id } = this.props.match.params;
-    this.props.fetchItem(id);
-  }
-
-  render() {
-    const { isFetching, isError } = this.props.item;
-    if (isFetching) {
-      return <div>Loading..</div>;
-    } else {
-      const item = this.props.item.data;
-      return item_details(item);
+  if (isFetching) {
+    return <div>Loading..</div>;
+  } else {
+    if (isError) {
+      return <div>Whoops! some error occurred on our server.</div>;
     }
+    return item_details(props.item.data);
   }
-}
+};
 
 const item_details = item => {
   const style = {
@@ -56,8 +49,4 @@ const item_details = item => {
   );
 };
 
-function mapStateToProps(state) {
-  return Object.assign({}, state);
-}
-
-export default connect(mapStateToProps, { fetchItem })(ItemDetails);
+export default ItemDetails;

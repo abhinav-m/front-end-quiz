@@ -6,8 +6,8 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import './index.css';
 import reducers from './reducers';
-import ItemsList from './components/ItemsList';
-import ItemDetail from './components/ItemDetail';
+import ItemsList from './containers/ItemsPageContainer';
+import ItemDetail from './containers/ItemDetailContainer';
 import fetchData from './middleware/FetchData';
 //import ItemDetails from './components/ItemsDetail';
 

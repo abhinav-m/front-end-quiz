@@ -1,6 +1,5 @@
 import {
   FETCH_ALL_ITEMS,
-  FETCH_ITEM,
   FETCH_ITEMS_ERROR,
   FETCH_ITEMS_SUCCESSFUL
 } from '../actions/types';
@@ -10,7 +9,6 @@ export default function(
     isFetching: true,
     isError: false,
     start: 1,
-    end: 9,
     data: [],
     totalItems: 0,
     fetchLimitReached: false
@@ -28,7 +26,7 @@ export default function(
       });
     case FETCH_ITEMS_SUCCESSFUL:
       //Add new data to existing data.
-      const { items, totalItems, fetchLimitReached, start, end } = action.data;
+      const { items, totalItems, fetchLimitReached, start } = action.data;
       const data = state.data.concat(items);
 
       return Object.assign({}, state, {
@@ -36,7 +34,6 @@ export default function(
         isError: false,
         data,
         start,
-        end,
         totalItems,
         fetchLimitReached
       });
